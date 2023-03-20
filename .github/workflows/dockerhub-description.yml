@@ -16,7 +16,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: yuzutech/kroki
+          repository: waterlion/kroki
           short-description: ${{ github.event.repository.description }}
           readme-filepath: ./DOCKERHUB.md
 
@@ -25,7 +25,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: yuzutech/kroki-bpmn
+          repository: waterlion/kroki-bpmn
           short-description: Companion server for Kroki that provides BPMN
           readme-filepath: ./DOCKERHUB-COMPANION.md
 
@@ -34,7 +34,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: yuzutech/kroki-excalidraw
+          repository: waterlion/kroki-excalidraw
           short-description: Companion server for Kroki that provides Excalidraw
           readme-filepath: ./DOCKERHUB-COMPANION.md
 
@@ -43,7 +43,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: yuzutech/kroki-mermaid
+          repository: waterlion/kroki-mermaid
           short-description: Companion server for Kroki that provides Mermaid
           readme-filepath: ./DOCKERHUB-COMPANION.md
 
@@ -52,7 +52,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: yuzutech/kroki-blockdiag
+          repository: waterlion/kroki-blockdiag
           short-description: Companion server for Kroki that provides BlockDiag, SeqDiag, ActDiag, NwDiag, PacketDiag and RackDiag
           readme-filepath: ./DOCKERHUB-COMPANION.md
 
@@ -61,7 +61,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: yuzutech/kroki-diagramsnet
+          repository: waterlion/kroki-diagramsnet
           short-description: Companion server for Kroki that provides diagrams.net (formerly draw.io)
           readme-filepath: ./DOCKERHUB-COMPANION.md
 
@@ -70,6 +70,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: yuzutech/kroki-wireviz
+          repository: waterlion/kroki-wireviz
           short-description: Companion server for Kroki that provides WireViz
           readme-filepath: ./DOCKERHUB-COMPANION.md

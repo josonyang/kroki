@@ -16,35 +16,35 @@ target "kroki" {
     bytefield = "./bytefield"
   }
   dockerfile = "ops/docker/jdk11-alpine/Dockerfile"
-  tags = ["yuzutech/kroki:${TAG}"]
+  tags = ["waterlion/kroki:${TAG}"]
 }
 
 target "kroki-blockdiag" {
   context = "blockdiag"
-  tags = ["yuzutech/kroki-blockdiag:${TAG}"]
+  tags = ["waterlion/kroki-blockdiag:${TAG}"]
 }
 
 target "kroki-mermaid" {
   context = "mermaid"
-  tags = ["yuzutech/kroki-mermaid:${TAG}"]
+  tags = ["waterlion/kroki-mermaid:${TAG}"]
 }
 
 target "kroki-bpmn" {
   context = "bpmn"
-  tags = ["yuzutech/kroki-bpmn:${TAG}"]
+  tags = ["waterlion/kroki-bpmn:${TAG}"]
 }
 
 target "kroki-excalidraw" {
   context = "excalidraw"
-  tags = ["yuzutech/kroki-excalidraw:${TAG}"]
+  tags = ["waterlion/kroki-excalidraw:${TAG}"]
 }
 
 target "kroki-diagramsnet" {
   context = "diagrams.net"
-  tags = ["yuzutech/kroki-diagramsnet:${TAG}"]
+  tags = ["waterlion/kroki-diagramsnet:${TAG}"]
 }
 
 target "kroki-wireviz" {
   context = "wireviz"
-  tags = ["yuzutech/kroki-wireviz:${TAG}"]
+  tags = ["waterlion/kroki-wireviz:${TAG}"]
 }

@@ -35,7 +35,7 @@ const instance = require('./browser-instance')
     }
     return micro.send(res, 400, 'Available endpoints are /svg and /png.')
   })
-  server.listen(8002)
+  server.listen(process.env.PORT || 80)
 })().catch(err => {
   logger.error({ err }, 'Unable to start the service')
   process.exit(1)

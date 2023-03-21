@@ -11,8 +11,6 @@ const createBrowser = async () => {
       // If software renderer is not in place, then the GPU process won't launch.
       '--disable-gpu',
       '--disable-translate',
-      // Disable the setuid sandbox (Linux only)
-      '--disable-setuid-sandbox',
       // Run in headless mode, i.e., without a UI or display server dependencies
       '--headless',
       // Prevents creating scrollbars for web content. Useful for taking consistent screenshots.
@@ -21,9 +19,11 @@ const createBrowser = async () => {
       '--mute-audio',
       // Stops new Shell objects from navigating to a default url. ↪
       '--no-initial-navigation',
+      // Disable the setuid sandbox (Linux only)
+      // '--disable-setuid-sandbox',
       // Disables the sandbox for all process types that are normally sandboxed.
       // Meant to be used as a browser-level switch for testing purposes only.
-      '--no-sandbox'
+      // '--no-sandbox'
     ]
   })
 

@@ -26,6 +26,6 @@ COPY --chown=kroki:kroki assets ./assets
 
 RUN npm i --omit=dev
 
-EXPOSE 8002
+EXPOSE 80
 
 ENTRYPOINT ["node", "src/index.js"]

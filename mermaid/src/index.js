@@ -14,6 +14,7 @@ const instance = require('./browser-instance')
     // TODO: read the diagram source as plain text
     const url = new URL(req.url, 'http://localhost') // create a URL object. The base is not important here
     const outputType = url.pathname.match(/\/(png|svg)$/)?.[1]
+    const isStatus = url.pathname.match(/\/(_status)$/) !== null
     if (outputType) {
       const diagramSource = await micro.text(req, { limit: '1mb', encoding: 'utf8' })
       if (diagramSource) {
@@ -32,6 +33,9 @@ const instance = require('./browser-instance')
         }
       }
       return micro.send(res, 400, 'Body must not be empty.')
+    }
+    if (isStatus) {
+      return micro.send(res, 200, 'OK')
     }
     return micro.send(res, 400, 'Available endpoints are /svg and /png.')
   })

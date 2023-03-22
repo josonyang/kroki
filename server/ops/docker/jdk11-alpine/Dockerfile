@@ -213,8 +213,8 @@ ENV JAVA_OPTS="-Dlogback.configurationFile=/etc/kroki/logback.xml -Dvertx.logger
 
 COPY --chown=kroki:kroki target/kroki-server.jar /usr/local/kroki/kroki-server.jar
 
-EXPOSE 8000
+EXPOSE 80
 
-USER kroki
+USER root
 
 ENTRYPOINT exec java $JAVA_OPTS -jar /usr/local/kroki/kroki-server.jar

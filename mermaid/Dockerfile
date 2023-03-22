@@ -30,6 +30,6 @@ RUN setcap 'cap_net_bind_service=+ep' /usr/local/bin/node
 
 EXPOSE 80
 
-USER kroki
+USER root
 
 ENTRYPOINT ["node", "src/index.js"]

@@ -18,12 +18,12 @@ const createBrowser = async () => {
       // Mutes audio sent to the audio device, so it is not audible during automated testing.
       '--mute-audio',
       // Stops new Shell objects from navigating to a default url. ↪
-      '--no-initial-navigation'
+      '--no-initial-navigation',
       // Disable the setuid sandbox (Linux only)
-      // '--disable-setuid-sandbox',
+      '--disable-setuid-sandbox',
       // Disables the sandbox for all process types that are normally sandboxed.
       // Meant to be used as a browser-level switch for testing purposes only.
-      // '--no-sandbox'
+      '--no-sandbox'
     ]
   })
 

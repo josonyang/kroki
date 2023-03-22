@@ -4,7 +4,8 @@ RUN addgroup -g 1001 kroki && adduser -D -G kroki -u 1001 kroki
 
 RUN apk add --quiet --no-cache --update \
   chromium \
-  font-noto-cjk
+  font-noto-cjk \
+  libcap
 
 RUN mkdir -p /usr/share/fonts/truetype/google-fonts
 COPY --chown=kroki:kroki fonts /usr/share/fonts/truetype/google-fonts
@@ -26,7 +27,7 @@ COPY --chown=kroki:kroki assets ./assets
 
 RUN npm i --omit=dev
 
-RUN apk add libcap && setcap 'cap_net_bind_service=+ep' /usr/local/kroki/node
+RUN setcap 'cap_net_bind_service=+ep' /usr/local/bin/node
 
 EXPOSE 80
 

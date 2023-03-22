@@ -13,7 +13,6 @@ RUN fc-cache -f && rm -rf /var/cache/*
 
 RUN mkdir -p /usr/local/kroki/node && chown kroki:kroki -R /usr/local/kroki
 
-USER kroki
 WORKDIR /usr/local/kroki/
 
 ENV KROKI_MERMAID_PAGE_URL=file:///usr/local/kroki/assets/index.html
@@ -30,5 +29,7 @@ RUN npm i --omit=dev
 RUN setcap 'cap_net_bind_service=+ep' /usr/local/bin/node
 
 EXPOSE 80
+
+USER kroki
 
 ENTRYPOINT ["node", "src/index.js"]

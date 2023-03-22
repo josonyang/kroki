@@ -26,6 +26,8 @@ COPY --chown=kroki:kroki assets ./assets
 
 RUN npm i --omit=dev
 
+RUN apk add libcap && setcap 'cap_net_bind_service=+ep' /usr/local/kroki/node
+
 EXPOSE 80
 
 ENTRYPOINT ["node", "src/index.js"]

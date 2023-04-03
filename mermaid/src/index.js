@@ -1,16 +1,20 @@
-const { logger } = require('./logger')
+const {
+  logger
+} = require('./logger')
 const micro = require('micro')
-const { Worker, SyntaxError } = require('./worker')
+const {
+  Worker,
+  SyntaxError
+} = require('./worker')
 const Task = require('./task')
 const instance = require('./browser-instance')
 const mathjax = require('mathjax-node')
 
-;(async () => {
+;
+(async () => {
 
   mathjax.config({
-    MathJax: {
-      
-    }
+    MathJax: {}
   })
   mathjax.start()
   // QUESTION: should we create a pool of Chrome instances ?
@@ -23,23 +27,27 @@ const mathjax = require('mathjax-node')
     const isStatus = url.pathname.indexOf('_status') > -1
     const isLatex = url.pathname.indexOf('latex') > -1
     if (outputType && !isStatus) {
-      const diagramSource = await micro.text(req, { limit: '1mb', encoding: 'utf8' })
+      const diagramSource = await micro.text(req, {
+        limit: '1mb',
+        encoding: 'utf8'
+      })
       if (diagramSource) {
         try {
           const isPng = outputType === 'png'
-          if(isLatex) {
-            res.setHeader('Content-Type', 'image/svg+xml')
+          if (isLatex) {
             mathjax.typeset({
-                math: diagramSource,
-                format: "TeX",  // or "inline-TeX", "MathML"
-                svg: true,      // or svg:true, or html:true
-            }).then((data)=>{
+              math: diagramSource,
+              format: 'TeX', // or "inline-TeX", "MathML"
+              svg: true, // or svg:true, or html:true
+            }).then((data) => {
               if (!data.errors) {
+                res.setHeader('Content-Type', 'image/svg+xml')
                 return micro.send(res, 200, data.svg)
               }
+            }).catch((err) => {
+              return micro.send(res, 400, err.message)
             })
             return;
-            // return micro.send(res, 500, 'An error occurred while converting the diagram')
           } else {
             const output = await worker.convert(new Task(diagramSource, isPng), url.searchParams)
             res.setHeader('Content-Type', isPng ? 'image/png' : 'image/svg+xml')
@@ -49,7 +57,9 @@ const mathjax = require('mathjax-node')
           if (err instanceof SyntaxError) {
             return micro.send(res, 400, err.message)
           } else {
-            logger.warn({ err }, 'Exception during convert')
+            logger.warn({
+              err
+            }, 'Exception during convert')
             return micro.send(res, 500, 'An error occurred while converting the diagram')
           }
         }
@@ -63,6 +73,8 @@ const mathjax = require('mathjax-node')
   })
   server.listen(process.env.PORT || 80)
 })().catch(err => {
-  logger.error({ err }, 'Unable to start the service')
+  logger.error({
+    err
+  }, 'Unable to start the service')
   process.exit(1)
 })
